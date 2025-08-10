@@ -21,7 +21,19 @@ app.config.suppress_callback_exceptions = True
 
 # Load data from csv
 def load_data():
-    # To do: Completar la función 
+    """
+    Function to load CSV data to a Pandas DataFrame as return
+    """
+    file_path = "datos_energia.csv"
+    data = pd.read_csv(file_path
+                        ,sep=','
+                        ,index_col='time'
+                        ,parse_dates=['time'])
+    print("Data loaded successfully. The columns are:")
+    print(data.columns)
+    print("A sample of the data:")
+    print(data.head())
+    return data
     
 
 # Cargar datos
@@ -240,4 +252,4 @@ def update_output_div(date, hour, proy):
 
 # Run the server
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True)
